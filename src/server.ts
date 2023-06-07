@@ -1,18 +1,47 @@
+/* eslint-disable no-console */
+
 import mongoose from 'mongoose'
 import app from './app'
 import config from './config'
+import { logger, errorLogger } from './shared/logger'
+import { Server } from 'http'
 
-async function tailwind() {
+process.on('uncaughtException', error => {
+  errorLogger.error(error)
+  process.exit(1)
+})
+
+let server: Server
+async function databaseConnection() {
   try {
     await mongoose.connect(config.database_url as string)
-    console.log('database connection established')
+    logger.info('database connection established')
 
-    app.listen(config.port, () => {
-      console.log(`application listening on port ${config.port}`)
+    server = app.listen(config.port, () => {
+      logger.info(`application listening on port ${config.port}`)
     })
   } catch (error) {
-    console.log('failed to connect', error)
+    errorLogger.error('failed to connect', error)
   }
+
+  process.on('unhandledRejection', error => {
+    console.log('unhandled rejection is detected,we are closing our server')
+    if (server) {
+      server.close(() => {
+        errorLogger.error(error)
+        process.exit(1)
+      })
+    } else {
+      process.exit(1)
+    }
+  })
 }
 
-tailwind()
+databaseConnection()
+
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM is received')
+  if (server) {
+    server.close()
+  }
+})
