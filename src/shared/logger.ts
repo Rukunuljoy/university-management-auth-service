@@ -1,21 +1,21 @@
 /* eslint-disable no-undef */
-import { createLogger, format, transports } from 'winston'
-import path from 'path'
-const { combine, timestamp, label, printf, prettyPrint } = format
-import DailyRotateFile from 'winston-daily-rotate-file'
+import { createLogger, format, transports } from 'winston';
+import path from 'path';
+const { combine, timestamp, label, printf, prettyPrint } = format;
+import DailyRotateFile from 'winston-daily-rotate-file';
 
 const myFormat = printf(({ level, message, label, timestamp }) => {
-  const date = new Date(timestamp)
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const seconds = date.getSeconds()
-  return `${date.toDateString()}${hour}:${minute}:${seconds} [${label}] ${level}: ${message}`
-})
+  const date = new Date(timestamp);
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const seconds = date.getSeconds();
+  return `${date.toDateString()}${hour}:${minute}:${seconds} [${label}] ${level}: ${message}`;
+});
 
 const logger = createLogger({
   level: 'info',
   format: combine(
-    label({ label: 'right meow!' }),
+    label({ label: 'success the connection' }),
     timestamp(),
     myFormat,
     prettyPrint()
@@ -36,12 +36,12 @@ const logger = createLogger({
       maxFiles: '14d',
     }),
   ],
-})
+});
 
 const errorLogger = createLogger({
   level: 'error',
   format: combine(
-    label({ label: 'right meow!' }),
+    label({ label: 'error the server connection!' }),
     timestamp(),
     myFormat,
     prettyPrint()
@@ -62,6 +62,6 @@ const errorLogger = createLogger({
       maxFiles: '14d',
     }),
   ],
-})
+});
 
-export { logger, errorLogger }
+export { logger, errorLogger };

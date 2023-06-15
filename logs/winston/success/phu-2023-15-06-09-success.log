@@ -1,0 +1,24 @@
+{
+  message: 'database connection established',
+  level: 'info',
+  label: 'success the connection',
+  timestamp: '2023-06-15T03:58:30.684Z'
+}
+{
+  message: 'application listening on port 5000',
+  level: 'info',
+  label: 'success the connection',
+  timestamp: '2023-06-15T03:58:30.698Z'
+}
+{
+  message: 'database connection established',
+  level: 'info',
+  label: 'success the connection',
+  timestamp: '2023-06-15T03:59:32.850Z'
+}
+{
+  message: 'application listening on port 5000',
+  level: 'info',
+  label: 'success the connection',
+  timestamp: '2023-06-15T03:59:32.875Z'
+}
