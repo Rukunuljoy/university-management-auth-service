@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-console */
-import { ErrorRequestHandler, NextFunction } from 'express';
+import { ErrorRequestHandler } from 'express';
 import { IGenericErrorMessage } from '../interfaces/error';
 import handleValidationError from '../../errors/handleValidationError';
 import config from '../../config';
@@ -8,13 +8,9 @@ import ApiError from '../../errors/ApiError';
 import { errorLogger } from '../../shared/logger';
 import { ZodError } from 'zod';
 import handleZodError from '../../errors/handleZodError';
+import handleCastError from '../../errors/handleCastError';
 
-const globalErrorHandler: ErrorRequestHandler = (
-  err,
-  req,
-  res,
-  next: NextFunction
-) => {
+const globalErrorHandler: ErrorRequestHandler = (err, req, res) => {
   config.env === 'development'
     ? console.log('globalErrorHandler ~', err)
     : errorLogger.error('globalErrorHandler ~', err);
@@ -30,6 +26,11 @@ const globalErrorHandler: ErrorRequestHandler = (
     errorMessages = simplifiedError.errorMessages;
   } else if (err instanceof ZodError) {
     const simplifiedError = handleZodError(err);
+    statusCode = simplifiedError.statusCode;
+    message = simplifiedError.message;
+    errorMessages = simplifiedError.errorMessages;
+  } else if (err?.name === 'CastError') {
+    const simplifiedError = handleCastError(err);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
@@ -62,8 +63,6 @@ const globalErrorHandler: ErrorRequestHandler = (
     errorMessages,
     stack: config.env !== 'production' ? err?.stack : undefined,
   });
-
-  next();
 };
 
 export default globalErrorHandler;

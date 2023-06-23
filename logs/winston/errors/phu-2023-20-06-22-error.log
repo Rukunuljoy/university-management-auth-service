@@ -1,0 +1,111 @@
+{
+  message: "failed to connect Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/",
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-qgtx0m6-shard-00-00.hvxqvqc.mongodb.net:27017' => ServerDescription {
+        address: 'ac-qgtx0m6-shard-00-00.hvxqvqc.mongodb.net:27017',
+        type: 'Unknown',
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        roundTripTime: -1,
+        lastUpdateTime: 773663134,
+        lastWriteDate: 0,
+        error: MongoNetworkError: connection <monitor> to 54.174.213.75:27017 closed
+            at Connection.onClose (D:\developer\university-management-auth-service\node_modules\mongodb\src\cmap\connection.ts:320:24)
+            at TLSSocket.<anonymous> (D:\developer\university-management-auth-service\node_modules\mongodb\src\cmap\connection.ts:245:42)
+            at TLSSocket.emit (node:events:513:28)
+            at node:net:322:12
+            at TCP.done (node:_tls_wrap:588:7) {
+          [Symbol(errorLabels)]: Set(1) { 'ResetPool' }
+        },
+        topologyVersion: null,
+        setName: null,
+        setVersion: null,
+        electionId: null,
+        logicalSessionTimeoutMinutes: null,
+        primary: null,
+        me: null,
+        '$clusterTime': null
+      },
+      'ac-qgtx0m6-shard-00-01.hvxqvqc.mongodb.net:27017' => ServerDescription {
+        address: 'ac-qgtx0m6-shard-00-01.hvxqvqc.mongodb.net:27017',
+        type: 'Unknown',
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        roundTripTime: -1,
+        lastUpdateTime: 773663909,
+        lastWriteDate: 0,
+        error: MongoNetworkError: connection <monitor> to 35.170.199.169:27017 closed
+            at Connection.onClose (D:\developer\university-management-auth-service\node_modules\mongodb\src\cmap\connection.ts:320:24)
+            at TLSSocket.<anonymous> (D:\developer\university-management-auth-service\node_modules\mongodb\src\cmap\connection.ts:245:42)
+            at TLSSocket.emit (node:events:513:28)
+            at node:net:322:12
+            at TCP.done (node:_tls_wrap:588:7) {
+          [Symbol(errorLabels)]: Set(1) { 'ResetPool' }
+        },
+        topologyVersion: null,
+        setName: null,
+        setVersion: null,
+        electionId: null,
+        logicalSessionTimeoutMinutes: null,
+        primary: null,
+        me: null,
+        '$clusterTime': null
+      },
+      'ac-qgtx0m6-shard-00-02.hvxqvqc.mongodb.net:27017' => ServerDescription {
+        address: 'ac-qgtx0m6-shard-00-02.hvxqvqc.mongodb.net:27017',
+        type: 'Unknown',
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        roundTripTime: -1,
+        lastUpdateTime: 773663800,
+        lastWriteDate: 0,
+        error: MongoNetworkError: connection <monitor> to 34.200.124.77:27017 closed
+            at Connection.onClose (D:\developer\university-management-auth-service\node_modules\mongodb\src\cmap\connection.ts:320:24)
+            at TLSSocket.<anonymous> (D:\developer\university-management-auth-service\node_modules\mongodb\src\cmap\connection.ts:245:42)
+            at TLSSocket.emit (node:events:513:28)
+            at node:net:322:12
+            at TCP.done (node:_tls_wrap:588:7) {
+          [Symbol(errorLabels)]: Set(1) { 'ResetPool' }
+        },
+        topologyVersion: null,
+        setName: null,
+        setVersion: null,
+        electionId: null,
+        logicalSessionTimeoutMinutes: null,
+        primary: null,
+        me: null,
+        '$clusterTime': null
+      }
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-ishmkd-shard-0',
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined,
+  level: 'error',
+  stack: "MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\n" +
+    '    at _handleConnectionErrors (D:\\developer\\university-management-auth-service\\node_modules\\mongoose\\lib\\connection.js:792:11)\n' +
+    '    at NativeConnection.openUri (D:\\developer\\university-management-auth-service\\node_modules\\mongoose\\lib\\connection.js:767:11)',
+  label: 'error the server connection!',
+  timestamp: '2023-06-20T16:10:41.923Z'
+}
