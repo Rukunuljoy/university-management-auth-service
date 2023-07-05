@@ -1,3 +1,4 @@
+// import { generateStudentId } from './app/modules/user/user.utils';
 /* eslint-disable no-unused-vars */
 import express, { Application, NextFunction, Response, Request } from 'express';
 import cors from 'cors';
@@ -37,5 +38,15 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
   next();
 });
+
+// const academicSemester = {
+//   code:'01',
+//   year:'2025'
+// }
+// const testId = async()=>{
+//   const testId =await generateFacultyId()
+//   console.log(testId);
+// }
+// testId()
 
 export default app;
