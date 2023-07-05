@@ -30,31 +30,6 @@ const getAllSemester = async (
 ): Promise<IGenericResponse<IAcademicSemester[]>> => {
   const { searchTerm, ...filtersData } = filters;
 
-  // const andConditions= [
-  //  {
-  //   $or:[
-  //     {
-  //       title:{
-  //         $regex:searchTerm,
-  //         $options:'i'
-  //       }
-  //     },
-  //     {
-  //       code:{
-  //         $regex:searchTerm,
-  //         $options:'i'
-  //       }
-  //     },
-  //     {
-  //       year:{
-  //         $regex:searchTerm,
-  //         $options:'i'
-  //       }
-  //     },
-
-  //    ]
-  //  }
-  // ]
   const andConditions = [];
 
   if (searchTerm) {
