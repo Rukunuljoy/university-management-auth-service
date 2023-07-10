@@ -16,7 +16,6 @@ const updateFacultyZodSchema = z.object({
     presentAddress: z.string().optional(),
     permanentAddress: z.string().optional(),
     department: z.string().optional(),
-    designation: z.string().optional(),
   }),
 });
 
