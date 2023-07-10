@@ -139,9 +139,6 @@ const createFacultyZodSchema = z.object({
       academicFaculty: z.string({
         required_error: 'Academic faculty is required',
       }),
-      designation: z.string({
-        required_error: 'Designation is required',
-      }),
       profileImage: z
         .string({
           required_error: 'Profile Image is required',
@@ -198,14 +195,6 @@ const createAdminZodSchema = z.object({
 
       permanentAddress: z.string({
         required_error: 'Permanent address is required',
-      }),
-
-      managementDepartment: z.string({
-        required_error: 'Management department is required',
-      }),
-
-      designation: z.string({
-        required_error: 'Designation is required',
       }),
 
       profileImage: z.string().optional(),

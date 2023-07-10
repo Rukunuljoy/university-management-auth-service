@@ -25,6 +25,7 @@ const createStudent = async (
   if (!user.password) {
     user.password = config.default_student_pass as string;
   }
+
   // set role
   user.role = 'student';
 
@@ -97,6 +98,7 @@ const createFaculty = async (
   if (!user.password) {
     user.password = config.default_faculty_pass as string;
   }
+
   // set role
   user.role = 'faculty';
 
@@ -134,17 +136,7 @@ const createFaculty = async (
   }
 
   if (newUserAllData) {
-    newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'faculty',
-      populate: [
-        {
-          path: 'academicDepartment',
-        },
-        {
-          path: 'academicFaculty',
-        },
-      ],
-    });
+    newUserAllData = await User.findOne({ id: newUserAllData.id });
   }
 
   return newUserAllData;
@@ -158,6 +150,7 @@ const createAdmin = async (
   if (!user.password) {
     user.password = config.default_admin_pass as string;
   }
+
   // set role
   user.role = 'admin';
 
@@ -194,14 +187,7 @@ const createAdmin = async (
   }
 
   if (newUserAllData) {
-    newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'admin',
-      populate: [
-        {
-          path: 'managementDepartment',
-        },
-      ],
-    });
+    newUserAllData = await User.findOne({ id: newUserAllData.id });
   }
 
   return newUserAllData;
