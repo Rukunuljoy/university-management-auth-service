@@ -139,11 +139,7 @@ const createFacultyZodSchema = z.object({
       academicFaculty: z.string({
         required_error: 'Academic faculty is required',
       }),
-      profileImage: z
-        .string({
-          required_error: 'Profile Image is required',
-        })
-        .optional(),
+      profileImage: z.string().optional(),
     }),
   }),
 });
